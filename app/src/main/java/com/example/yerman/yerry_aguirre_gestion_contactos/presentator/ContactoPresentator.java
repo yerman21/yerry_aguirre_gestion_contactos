@@ -1,6 +1,7 @@
 package com.example.yerman.yerry_aguirre_gestion_contactos.presentator;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.yerman.yerry_aguirre_gestion_contactos.interfaces.ContactoInterface;
 import com.example.yerman.yerry_aguirre_gestion_contactos.model.ContactoModel;
@@ -26,7 +27,8 @@ public class ContactoPresentator implements ContactoInterface.Presentator {
 
     @Override
     public void notificar(long codigo) {
-        view.notificar(codigo);
+        Log.w("miMap","el  notificar es: "+codigo);
+        view2.notificar(codigo);
     }
 
     @Override

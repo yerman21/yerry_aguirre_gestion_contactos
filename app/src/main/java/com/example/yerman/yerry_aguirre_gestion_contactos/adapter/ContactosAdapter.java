@@ -3,6 +3,7 @@ package com.example.yerman.yerry_aguirre_gestion_contactos.adapter;
 import com.example.yerman.yerry_aguirre_gestion_contactos.R;
 import com.example.yerman.yerry_aguirre_gestion_contactos.model.ConecSqlite;
 import com.example.yerman.yerry_aguirre_gestion_contactos.view.ContactosFragment;
+import com.example.yerman.yerry_aguirre_gestion_contactos.view.FormContactoActivity;
 
 import android.Manifest;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +26,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.ContactoViewHolder> {
-    private ArrayList<HashMap<String,Object>> lista;
-    public ContactosAdapter(ArrayList<HashMap<String,Object>> lista){
-        this.lista=lista;
+    private ArrayList<HashMap<String, Object>> lista;
+
+    public ContactosAdapter(ArrayList<HashMap<String, Object>> lista) {
+        this.lista = lista;
     }
+
     //Éste método es llamado cuando el ViewHolder necesita ser inicializado.
     // Especificamos el layout que cada elemento de RecyclerView debería usar.
     // Ésto se hace al inflar el layout usando LayoutInflater, pasando el resultado al constructor del ViewHolder.
@@ -51,6 +55,7 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         holder.nCelular.setText(lista.get(position).get(ConecSqlite.Contacto._ID).toString());
         holder.img.setImageResource(R.drawable.ic_person);
 
+        holder.setOnClickListeners();
         //holder.nombre.setText(listaProductos (position).get("nombre").toString());
     }
 
@@ -59,10 +64,10 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         return lista.size();
     }
 
-    public static class ContactoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public static class ContactoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         Context context;
-        RelativeLayout card_info,card_btn_option;
+        ImageButton card_btn_option, card_btn_call;
         TextView nombre;
         TextView grupo;
         TextView nCelular;
@@ -70,31 +75,34 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
 
         ContactoViewHolder(View itemView) {
             super(itemView);
-            context=itemView.getContext();
-            card_info = (RelativeLayout) itemView.findViewById(R.id.card_info);
-            card_btn_option = (RelativeLayout) itemView.findViewById(R.id.card_btn_option);
-            nombre = (TextView)itemView.findViewById(R.id.card_nombre);
-            grupo = (TextView)itemView.findViewById(R.id.card_grupo);
-            nCelular = (TextView)itemView.findViewById(R.id.card_numero);
-            img = (ImageView)itemView.findViewById(R.id.card_foto);
+            context = itemView.getContext();
+            card_btn_call = (ImageButton) itemView.findViewById(R.id.card_btn_call);
+            card_btn_option = (ImageButton) itemView.findViewById(R.id.card_btn_option);
+            nombre = (TextView) itemView.findViewById(R.id.card_nombre);
+            grupo = (TextView) itemView.findViewById(R.id.card_grupo);
+            nCelular = (TextView) itemView.findViewById(R.id.card_numero);
+            img = (ImageView) itemView.findViewById(R.id.card_foto);
         }
 
-        void setOnClickListener(){
-            card_info.setOnClickListener(this);
+        void setOnClickListeners() {
+            card_btn_call.setOnClickListener(this);
             card_btn_option.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.card_info:
-                    if(ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE)
-                            != PackageManager.PERMISSION_GRANTED)
+            switch (v.getId()) {
+                case R.id.card_btn_call:
+                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                         return;
-                    context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+nCelular.getText().toString())));
+                    }
+                    context.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ nCelular.getText().toString())));
                     break;
                 case R.id.card_btn_option:
-                    Intent intent=new Intent(context, ContactosFragment.class);
+                    Intent intent=new Intent(context, FormContactoActivity.class);
+                    intent.putExtra("nombre",nombre.getText().toString());
+                    intent.putExtra("numero",nCelular.getText().toString());
+                    intent.putExtra("grupo",grupo.getText().toString());
                     context.startActivity(intent);
                     break;
             }

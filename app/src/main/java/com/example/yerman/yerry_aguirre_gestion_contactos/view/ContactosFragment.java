@@ -35,20 +35,11 @@ public class ContactosFragment extends Fragment implements ContactoInterface.Vie
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_contactos, container, false);
 
-        fab = (FloatingActionButton) view.findViewById(R.id.fab_add_contacto);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getContext().startActivity(new Intent(getContext(),FormContactoActivity.class));
-            }
-        });
-
         presentator=new ContactoPresentator(this);
-        lista= new ArrayList<HashMap<String,Object>>();
+        lista= presentator.lista();
         rv = (RecyclerView)view.findViewById(R.id.rv_contacto);
 
         rv.setItemAnimator(new DefaultItemAnimator());
-        rv.setHasFixedSize(true);
         // LinearLayoutManager hará que tu RecyclerView parezca una ListView.
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter=new ContactosAdapter(lista);

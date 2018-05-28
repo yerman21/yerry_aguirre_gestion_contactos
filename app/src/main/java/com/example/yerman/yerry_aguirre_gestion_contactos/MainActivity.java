@@ -1,5 +1,6 @@
 package com.example.yerman.yerry_aguirre_gestion_contactos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.yerman.yerry_aguirre_gestion_contactos.view.ContactosFragment;
+import com.example.yerman.yerry_aguirre_gestion_contactos.view.FormContactoActivity;
 import com.example.yerman.yerry_aguirre_gestion_contactos.view.HistorialFragment;
 import com.example.yerman.yerry_aguirre_gestion_contactos.view.TelefonoFragment;
 
@@ -52,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 TelefonoFragment telefonoFragment=new TelefonoFragment();
                 transaction.replace(R.id.container_fragment, telefonoFragment);
                 transaction.addToBackStack(null).commit();
+                break;
+            case R.id.nav_add_contacto:
+                startActivity(new Intent(this,FormContactoActivity.class));
                 break;
             case R.id.nav_historial:
                 HistorialFragment historialFragment=new HistorialFragment();

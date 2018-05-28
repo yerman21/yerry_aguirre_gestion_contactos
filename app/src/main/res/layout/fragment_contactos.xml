@@ -11,13 +11,4 @@
         android:layout_height="match_parent"
         android:id="@+id/rv_contacto"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_add_contacto"
-        android:layout_width="71dp"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
 </FrameLayout>

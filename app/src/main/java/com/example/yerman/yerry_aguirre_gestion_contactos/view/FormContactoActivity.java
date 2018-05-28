@@ -38,6 +38,13 @@ public class FormContactoActivity extends AppCompatActivity implements ContactoI
         et_numero=(EditText)findViewById(R.id.et_numero);
         et_grupo=(EditText)findViewById(R.id.et_grupo);
 
+        Bundle extras=getIntent().getExtras();
+        if(extras!=null){
+            et_nombre.setText(extras.getString("nombre"));
+            et_numero.setText(extras.getString("numero"));
+            et_grupo.setText(extras.getString("grupo"));
+        }
+
         fab = (FloatingActionButton) findViewById(R.id.fab_form_contacto);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

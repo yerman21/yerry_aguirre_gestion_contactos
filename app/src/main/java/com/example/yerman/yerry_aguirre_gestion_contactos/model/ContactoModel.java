@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.yerman.yerry_aguirre_gestion_contactos.interfaces.ContactoInterface;
 
@@ -65,6 +66,10 @@ public class ContactoModel implements ContactoInterface.Model {
     public void insert_update(HashMap<String, Object> contacto) {
         ContentValues values=new ContentValues();
         String numero=contacto.get(ConecSqlite.Contacto._ID).toString();
+
+        Log.w("miMap","el numero ContactoModel es: "+contacto.get(ConecSqlite.Contacto._ID).toString());
+        Log.w("miMap","el nombre ContactoModel es: "+contacto.get(ConecSqlite.Contacto.NOMBRE).toString());
+        Log.w("miMap","el grupo ContactoModel es: "+contacto.get(ConecSqlite.Contacto.GRUPO).toString());
 
         values.put(ConecSqlite.Contacto._ID,numero);
         values.put(ConecSqlite.Contacto.NOMBRE,contacto.get(ConecSqlite.Contacto.NOMBRE).toString());
