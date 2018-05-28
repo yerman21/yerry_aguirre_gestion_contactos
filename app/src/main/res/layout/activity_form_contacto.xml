@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.FormContactoActivity">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="100dp">
+
+        <EditText
+            android:id="@+id/et_nombre"
+            android:hint="Nombre del contato"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/et_numero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_nombre"
+            android:layout_marginTop="10dp"
+            android:hint="Numero del contato"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/et_grupo"
+            android:hint="Grupo del contato"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/et_numero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_form_contacto"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+</android.support.design.widget.CoordinatorLayout>

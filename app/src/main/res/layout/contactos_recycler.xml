@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/contacto_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+            <RelativeLayout
+            android:id="@+id/card_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/card_foto"
+                android:src="@drawable/ic_person"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp" />
+
+            <TextView
+                android:id="@+id/card_nombre"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/card_foto"
+                android:text="Juanito la Alpaca" />
+
+            <TextView
+                android:id="@+id/card_numero"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/card_foto"
+                android:layout_below="@+id/card_nombre"
+                android:text="992837362"/>
+
+            <TextView
+                android:id="@+id/card_grupo"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/card_foto"
+                android:layout_below="@+id/card_numero"
+                android:text="Trabajo"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/card_btn_option"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/card_info"
+                android:layout_marginLeft="7dp">
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/colorPrimary"
+                    android:src="@drawable/img_option"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
